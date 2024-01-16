@@ -1,0 +1,14 @@
+<div class="login-container">
+  <img src="../../../assets/img/logo.jpeg" alt="Logo" class="logo">
+  <form [formGroup]="loginForm" (ngSubmit)="signIn()" class="form-group">
+    <mat-form-field appearance="outline">
+      <mat-label>usuario.login</mat-label>
+      <input matInput formControlName="userLogin">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="userPassword">
+    </mat-form-field>
+    <button type="button" (click)="signIn()">Entrar</button>
+  </form>
+</div>

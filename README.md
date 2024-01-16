@@ -1,27 +1,33 @@
-# SistemapactoClient
+# Sistema Pacto - Desenvolvedor Fullstack Pleno Java/Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+## Visão Geral
 
-## Development server
+Este projeto foi desenvolvido para gerenciar vagas internas de uma empresa. Os usuários administradores podem cadastrar novas habilidades requisitadas para as vagas, e os recrutadores podem usar essas habilidades como palavra-chave ao criar suas vagas.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+O programa foi criado para atender as exigências de um teste técnico para a vaga de desenvolvedor fullstack Java/Angular.
 
-## Code scaffolding
+## Tecnologias Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 16
+- Angular Material
+- Angular-JWT
 
-## Build
+## Como Executar o Programa
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone o repositório [hiring-system-client](link-para-o-repositorio-cliente).
+2. Clone o repositório [hiring-system-server](link-para-o-repositorio-servidor).
+3. No terminal, navegue até a pasta do projeto.
+4. Certifique-se de ter o Node.js instalado.
+5. Execute o comando `npm install` para instalar as dependências.
+6. Execute o programa com o comando `ng serve`.
 
-## Running unit tests
+## Funcionalidades
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Cadastro de Usuários
+- Cadastro de Vagas
+- Candidatos podem aplicar para as vagas
+- Recrutadores são notificados por e-mail quando um candidato se aplica
 
-## Running end-to-end tests
+## Agradecimento
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Agradeço pela oportunidade de desenvolver este projeto. Estou entusiasmado para contribuir e espero avançar para as próximas etapas do processo seletivo. Obrigado por considerar minha participação.
