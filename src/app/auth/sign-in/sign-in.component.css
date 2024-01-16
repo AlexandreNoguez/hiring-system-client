@@ -181,8 +181,8 @@ button:focus {
 }
 
 .overlay {
-  background: -webkit-linear-gradient(#8CA6DB, #B993D6);
-  background: linear-gradient(#8CA6DB, #B993D6);
+  background: -webkit-linear-gradient(#00092a, #0f44c6);
+  background: linear-gradient(#00092a, #0f44c6);
   opacity: 0.85;
   filter: alpha(opacity=85);
   height: 560px;
@@ -274,4 +274,13 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+
+.form-label,
+.mat-mdc-form-field-required-marker,
+.mdc-floating-label--required,
+.ng-tns-c1205077789-1,
+.ng-star-inserted,
+label {
+  color: white;
 }

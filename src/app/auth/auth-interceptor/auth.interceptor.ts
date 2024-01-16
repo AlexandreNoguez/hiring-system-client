@@ -7,6 +7,9 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+/**
+ * Se sobrar tempo para o desenvolvimento vou tentar implementar
+ */
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
