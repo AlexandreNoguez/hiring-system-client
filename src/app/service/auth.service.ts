@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Input, SimpleChanges } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { Injectable, Input } from '@angular/core';
 import { AuthModel } from '../types/AuthModel';
-import { Observable, catchError, tap, throwError } from 'rxjs';
-import { tokenGetter } from '../app.module';
-import { Router, Routes } from '@angular/router';
+import { Observable, tap } from 'rxjs';
+import { Router } from '@angular/router';
 import { SessionStorage } from '../utils/session-storage';
+import { NotificationService } from './notification.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,15 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private storage: SessionStorage
+    private storage: SessionStorage,
+    private notification: NotificationService
   ) { }
 
   @Input() token: string | null = null;
 
   private apiUrl = 'http://localhost:8080/api/auth/signIn';
+  helper = new JwtHelperService();
+
 
   signIn(credentials: AuthModel): Observable<any> {
     console.log(`${this.apiUrl}`, credentials);
@@ -33,21 +36,54 @@ export class AuthService {
         }
       })
     );
+  }
 
+  signOut() {
+    console.log("signout");
+
+    localStorage.removeItem("authToken");
+    this.router.navigate(["/sign-in"])
+  }
+
+  public getAuthUser() {
+    const authToken = localStorage.getItem('authToken');
+    console.log("authToken", authToken);
+
+    if (authToken) {
+      return true
+    }
+    return false
 
   }
 
-  getAuthUser() {
-    console.log(this.storage.getItem('auth'));
-    if (this.storage.getItem('auth')) {
-      var value = this.storage.getItem('auth')?.toString();
-      if (value) {
-        return JSON.parse(value);
+  public getToken() {
+    return localStorage.getItem('authToken');
+
+  }
+
+  public decodePayloadJWT(): any {
+    try {
+      // console.log(jwt_decode(this.getToken()));
+      // return jwt_decode(this.getToken());
+      let token = this.getToken();
+      console.log("tokenteste", token);
+      let decodedToken;
+
+      if (token) {
+        return decodedToken = this.helper.decodeToken(token)
       } else {
-        return null;
+        // this.notification.errorMessage("Falha na autenticação, entre novamente por favor!")
+        return null
       }
-    } else {
-      return null;
+    } catch (err) {
+      console.log("aqui");
+      return console.error(err);
+      ;
     }
   }
+
+
+
 }
+
+

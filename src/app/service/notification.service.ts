@@ -11,7 +11,7 @@ export class NotificationService {
   ) { }
 
   okMessage(mensagem: string) {
-    this.snackBar.open(mensagem, "Ok", {
+    this.snackBar.open(mensagem, "Sucesso", {
       duration: 2000,
       verticalPosition: "top",
       horizontalPosition: "center"
@@ -19,7 +19,7 @@ export class NotificationService {
   }
 
   errorMessage(mensagem: string) {
-    this.snackBar.open(mensagem, "Error", {
+    this.snackBar.open(mensagem, "Erro", {
       duration: 2000,
       verticalPosition: "top",
       horizontalPosition: "center"
