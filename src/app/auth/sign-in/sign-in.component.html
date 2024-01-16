@@ -1,4 +1,29 @@
-<div class="login-container">
+<div class='container'>
+  <div class='window'>
+    <div class='overlay'></div>
+    <div class='content'>
+      <div class="login-container">
+        <img src="../../../assets/img/logo.jpeg" alt="Logo" class="logo">
+        <form [formGroup]="loginForm" (ngSubmit)="onSignIn()" class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>usuario.login</mat-label>
+            <input matInput formControlName="userLogin">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="userPassword">
+          </mat-form-field>
+          <button type="submit" [disabled]="isButtonDisabled">{{buttonText}}</button>
+        </form>
+        <div class='spacing'>Ainda não tem uma conta?
+          <span class='highlight' routerLink="/sign-up">cadastre-se!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="login-container">
   <img src="../../../assets/img/logo.jpeg" alt="Logo" class="logo">
   <form [formGroup]="loginForm" (ngSubmit)="signIn()" class="form-group">
     <mat-form-field appearance="outline">
@@ -11,4 +36,4 @@
     </mat-form-field>
     <button type="button" (click)="signIn()">Entrar</button>
   </form>
-</div>
+</div> -->

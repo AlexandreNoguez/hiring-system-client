@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { NotificationService } from 'src/app/service/notification.service';
-import { AuthModel } from 'src/app/types/AuthModel';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -20,23 +19,17 @@ export class SignInComponent implements OnInit {
     private notification: NotificationService
   ) { }
 
-  // authDetails: AuthModel = {
-  //   userLogin: "",
-  //   userPassword: ""
-  // };
   loginForm: FormGroup = this.formBuilder.group({
     userLogin: ["", Validators.required],
     userPassword: ["", Validators.required]
-
   });
-  // message: string | undefined;
-  // returnUrl: string | undefined;
+  isButtonDisabled = false;
+  buttonText = "Entrar"
 
-
-
-  ngOnInit() {
-
-    if (localStorage.getItem('authToken') === 'true') {
+  async ngOnInit() {
+    let token = await this.authService.decodePayloadJWT()
+    console.log("token", token);
+    if (token) {
       this.router.navigate(['/']);
     } else {
       this.router.navigate(['/sign-in']);
@@ -46,12 +39,11 @@ export class SignInComponent implements OnInit {
       userLogin: [''],
       userPassword: ['']
     });
-    // this.returnUrl = '/dashboard';
-    // this.authService.signIn(this.authDetails);
   }
 
-  // loginForm
-  signIn() {
+  onSignIn() {
+    this.isButtonDisabled = true;
+    this.buttonText = "Carregando..."
     const credentials = this.loginForm.value;
 
     this.authService.signIn(credentials).subscribe(
@@ -62,8 +54,8 @@ export class SignInComponent implements OnInit {
       },
       (error) => {
         console.error('Erro no login', error);
-
-
+        this.isButtonDisabled = false;
+        this.buttonText = "Entrar"
         this.notification.errorMessage("Login ou Senha errado, tente novamente.")
         console.error('Erro no login', error);
       }
@@ -71,9 +63,6 @@ export class SignInComponent implements OnInit {
 
   }
 
-  // enviarFormulario() {
-  //   this.notificacao.notificar("Formulário enviado com sucesso");
-  //   this.formContato.reset();
-  // }
+
 
 }
