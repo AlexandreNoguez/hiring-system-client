@@ -19,7 +19,8 @@ O programa foi criado para atender as exigências de um teste técnico para a va
 3. No terminal, navegue até a pasta do projeto.
 4. Certifique-se de ter o Node.js instalado.
 5. Execute o comando `npm install` para instalar as dependências.
-6. Execute o programa com o comando `ng serve`.
+6. Execute o programa com o comando `npm start`.
+7. Execute o servidor.
 
 ## Funcionalidades
 

@@ -1,7 +1,9 @@
 import { Platform } from '@angular/cdk/platform';
 import { Injectable } from '@angular/core';
 import { MemoryStorage } from './memory-storage';
-
+/**
+ * Acabei não usando por não precisar de tanta complexidade para essa aplicação mas vou deixar de exemplo de métodos
+ */
 @Injectable({
   providedIn: 'root',
 })
