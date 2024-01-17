@@ -1,22 +1,23 @@
+<router-outlet></router-outlet>
 <div class='container'>
   <div class='window'>
     <div class='overlay'></div>
     <div class='content'>
       <div class="login-container">
         <img src="../../../assets/img/logo.jpeg" alt="Logo" class="logo">
-        <form [formGroup]="loginForm" (ngSubmit)="onSignIn()" class="form-group">
-          <mat-form-field appearance="outline">
+        <form [formGroup]="loginForm" (ngSubmit)="onSignIn()" class="form">
+          <mat-form-field class="form-label" appearance="outline">
             <mat-label class="form-label">usuario.login</mat-label>
             <input matInput formControlName="userLogin">
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label class="form-label">Senha</mat-label>
+            <mat-label>Senha</mat-label>
             <input matInput formControlName="userPassword">
           </mat-form-field>
           <button type="submit" [disabled]="isButtonDisabled">{{buttonText}}</button>
         </form>
         <div class='spacing'>Ainda não tem uma conta?
-          <span class='highlight' routerLink="/sign-up">cadastre-se!</span>
+          <span class='highlight' routerLink="/auth/sign-up">CADASTRE-SE!</span>
         </div>
       </div>
     </div>

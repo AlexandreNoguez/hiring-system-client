@@ -32,7 +32,7 @@ export class SignInComponent implements OnInit {
     if (token) {
       this.router.navigate(['/']);
     } else {
-      this.router.navigate(['/sign-in']);
+      this.router.navigate(['auth/sign-in']);
     }
 
     this.loginForm = this.formBuilder.group({
