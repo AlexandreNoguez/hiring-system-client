@@ -1,9 +1,8 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Inject, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
@@ -15,28 +14,22 @@ import { AuthService } from './service/auth.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthInterceptor } from './auth/auth-interceptor/auth.interceptor';
 
-export function tokenGetter() {
-  return localStorage.getItem("authToken");
-}
-let user = tokenGetter();
-console.log(user)
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     RouterOutlet,
     CommonModule,
-    MatSnackBarModule
-    // NgxMaskDirective
+    MatSnackBarModule,
+    AppRoutingModule
     // NgxMaskPipe
+    // NgxMaskDirective
   ],
   exports: [
     CommonModule,
@@ -46,7 +39,6 @@ console.log(user)
   providers: [
     JwtHelperService,
     AuthService,
-    Inject,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
