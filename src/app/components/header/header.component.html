@@ -3,31 +3,37 @@
     <div class="navbar-mobile-top" fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="start center">
       <div class="header-container logo">
         <img src="../../assets/img/logo.jpeg" alt="Logo" routerLink="/">
+
         <nav class="nav-menu top-navbar">
           <ul>
-            <li><a class="nav-links">Cadastrar Vagas</a></li>
-            <li><a class="nav-links">Buscar Vagas</a></li>
-            <li><a class="nav-links">Detalhes</a></li>
+            <li *ngIf="isAdmin"><a class="nav-links" routerLink="/cadastrar-habilidades">Gerenciar Habilidades</a></li>
+            <li *ngIf="isCandidate"><a class="nav-links" routerLink="/cadastrar-vagas">Gerenciar Vagas</a></li>
+<!--            <li routerLink="/buscar-vagas"><a class="nav-links">Buscar Vagas</a></li>-->
+            <li routerLink="/cadastrar-vagas"><a class="nav-links">Detalhes</a></li>
             <li><a class="nav-links" (click)="onSignOut()">Sair</a></li>
           </ul>
         </nav>
-        <!-- <button mat-icon-button color="accent" class="navbar-toggle" (click)="toggleNavbar()">
-          <mat-icon>{{!navbarOpened ? 'menu': 'close'}}</mat-icon>
 
-        </button> -->
         <button class="navbar-toggle" mat-icon-button [matMenuTriggerFor]="menu"
           aria-label="Example icon-button with a menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>
+          <button *ngIf="isAdmin" routerLink="/cadastrar-habilidades" mat-menu-item>
             <mat-icon>dialpad</mat-icon>
-            <span>Buscar Vagas</span>
+            <span>Gerenciar Habilidades</span>
           </button>
+
+          <button *ngIf="isCandidate" routerLink="/cadastrar-vagas" mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Gerenciar Vagas</span>
+          </button>
+
           <button mat-menu-item>
             <mat-icon>voicemail</mat-icon>
             <span>Detalhes</span>
           </button>
+
           <button mat-menu-item>
             <mat-icon>notifications_off</mat-icon>
             <span (click)="onSignOut()">Sair</span>
@@ -35,27 +41,8 @@
         </mat-menu>
       </div>
     </div>
-    <!-- <div fxFlex class="top-navbar">
-      <span fxFlex></span>
-      <a mat-button class="navbartop-btn"><strong>About Us</strong></a>
-      <a mat-button class="navbartop-btn"><strong>Services</strong></a>
-      <a mat-button class="navbartop-btn"><strong>Testimonials</strong></a>
-      <a mat-button class="navbartop-btn"><strong>Contact</strong></a>
-    </div> -->
+
   </div>
 </header>
 
-<!-- <header class="header">
-  <div class="header-container">
-    <div class="logo">
-      <img src="../../assets/img/logo.jpeg" alt="Logo" routerLink="/">
-    </div>
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="#">Buscar Vagas</a></li>
-        <li><a href="#">Detalhes</a></li>
-        <li><a href="#">Sair</a></li>
-      </ul>
-    </nav>
-  </div>
-</header> -->
+
