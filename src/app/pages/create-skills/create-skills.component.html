@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class='container'>
+  <div class='window'>
+    <div class='content'>
+      <h1 style="margin-top: 1rem;">Cadastrar Habilidades</h1>
+      <ul class="skill-action">
+        <button (click)="onCreateView()">Cadastrar</button>
+        <button (click)="onEditView()">Editar</button>
+        <button (click)="onDeleteView()">Deletar</button>
+      </ul>
+
+      <form *ngIf="create" [formGroup]="skillForm" (ngSubmit)="onCreateNewSkill()" class="form">
+        <div class="form-group">
+          <h2>Cadastrar</h2>
+
+          <mat-form-field >
+            <mat-label class="form-label">Nome da habilidade</mat-label>
+            <input matInput formControlName="title">
+          </mat-form-field>
+        </div>
+        <button style="width: 212px; align-self: center;" type="submit"
+                [disabled]="isButtonDisabled">{{buttonText}}</button>
+      </form>
+      <form *ngIf="edit" [formGroup]="skillForm" (ngSubmit)="onCreateNewSkill()" class="form">
+        <div class="form-group">
+          <h2>Editar</h2>
+          <h3 style="margin: 2rem">Em contrução...</h3>
+        </div>
+        <button style="width: 212px; align-self: center;" type="submit"
+                [disabled]="isButtonDisabled">{{buttonText}}</button>
+      </form>
+      <form *ngIf="delete" [formGroup]="skillForm" (ngSubmit)="onCreateNewSkill()" class="form">
+        <div class="form-group">
+          <h2>Deletar</h2>
+          <h3 style="margin: 2rem">Em contrução...</h3>
+        </div>
+        <button style="width: 212px; align-self: center;" type="submit"
+                [disabled]="isButtonDisabled">{{buttonText}}</button>
+      </form>
+    </div>
+  </div>
+</div>
+
