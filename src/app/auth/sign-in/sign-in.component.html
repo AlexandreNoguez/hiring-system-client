@@ -6,13 +6,13 @@
       <div class="login-container">
         <img src="../../../assets/img/logo.jpeg" alt="Logo" class="logo">
         <form [formGroup]="loginForm" (ngSubmit)="onSignIn()" class="form">
-          <mat-form-field class="form-label" appearance="outline">
+          <mat-form-field class="form-label" >
             <mat-label class="form-label">usuario.login</mat-label>
             <input matInput formControlName="userLogin">
           </mat-form-field>
-          <mat-form-field appearance="outline">
+          <mat-form-field >
             <mat-label>Senha</mat-label>
-            <input matInput formControlName="userPassword">
+            <input type="password" matInput formControlName="userPassword">
           </mat-form-field>
           <button type="submit" [disabled]="isButtonDisabled">{{buttonText}}</button>
         </form>
@@ -24,17 +24,3 @@
   </div>
 </div>
 
-<!-- <div class="login-container">
-  <img src="../../../assets/img/logo.jpeg" alt="Logo" class="logo">
-  <form [formGroup]="loginForm" (ngSubmit)="signIn()" class="form-group">
-    <mat-form-field appearance="outline">
-      <mat-label>usuario.login</mat-label>
-      <input matInput formControlName="userLogin">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Senha</mat-label>
-      <input matInput formControlName="userPassword">
-    </mat-form-field>
-    <button type="button" (click)="signIn()">Entrar</button>
-  </form>
-</div> -->
