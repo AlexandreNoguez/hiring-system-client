@@ -1,0 +1,77 @@
+<app-header></app-header>
+<div class='container'>
+  <div class='window'>
+    <div class='content'>
+      <h1 style="margin-top: 1rem;">Cadastrar Vagas</h1>
+
+      <ul class="skill-action">
+        <button (click)="onCreateView()">Cadastrar</button>
+        <button (click)="onEditView()">Editar</button>
+        <button (click)="onDeleteView()">Deletar</button>
+      </ul>
+
+      <form *ngIf="create" [formGroup]="jobForm" (ngSubmit)="onCreateNewJob()" class="form">
+        <div class="form-group">
+          <h2>Cadastrar</h2>
+
+          <mat-form-field>
+            <mat-label class="form-label">Título da Vaga</mat-label>
+            <input matInput formControlName="title">
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>Descrição da Vaga</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+
+          <div style="text-align: center; max-width: 320px">
+            <p>Selecione a habilidade necessária para seu candidato e utilize o botão de Adicionar. </p>
+          </div>
+
+          <mat-form-field>
+            <mat-label>Selecione</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option *ngFor="let skill of skills" [value]="skill.title">{{skill.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <button type="button" (click)="addSkill()" mat-raised-button>Adicionar</button>
+        </div>
+
+        <button
+          style="width: 212px; align-self: center; margin-top: 2rem"
+          type="submit" [disabled]="isButtonDisabled">
+          {{buttonText}}
+        </button>
+
+        <div class="show-selected-skills">
+          <p style="text-align: center">Habilidades selecionadas: </p>
+          <div>
+            <button disabled *ngFor="let skill of selectedSkills">{{selectedSkills.length ? skill : "" }}</button>
+          </div>
+        </div>
+      </form>
+
+
+      <form *ngIf="edit" [formGroup]="jobForm" (ngSubmit)="onCreateNewJob()" class="form">
+        <div class="form-group">
+          <h2>Editar</h2>
+          <h3 style="margin: 2rem">Em contrução...</h3>
+        </div>
+        <button style="width: 212px; align-self: center;" type="submit"
+                [disabled]="isButtonDisabled">{{buttonText}}</button>
+      </form>
+      <form *ngIf="delete" [formGroup]="jobForm" (ngSubmit)="onCreateNewJob()" class="form">
+        <div class="form-group">
+          <h2>Deletar</h2>
+          <h3 style="margin: 2rem">Em contrução...</h3>
+        </div>
+        <button style="width: 212px; align-self: center;" type="submit"
+                [disabled]="isButtonDisabled">{{buttonText}}</button>
+      </form>
+    </div>
+  </div>
+</div>
+
