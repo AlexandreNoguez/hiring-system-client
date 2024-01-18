@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 /**
  * Acabei não usando por não precisar de tanta complexidade para essa aplicação mas vou deixar de exemplo de métodos
