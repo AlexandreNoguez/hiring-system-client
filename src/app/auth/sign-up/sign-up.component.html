@@ -1,0 +1,80 @@
+<router-outlet></router-outlet>
+<div class='container'>
+  <div class='window'>
+    <div class='content'>
+      <img src="../../../assets/img/logo.jpeg" alt="Logo" class="logo">
+      <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()" class="form">
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label class="form-label">seu.login</mat-label>
+            <input matInput formControlName="userLogin">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label class="form-label" class="form-label">Nome</mat-label>
+            <input matInput formControlName="userName">
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label class="form-label">Senha</mat-label>
+            <input type="password" matInput formControlName="userPassword">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label class="form-label">Repita sua senha</mat-label>
+            <input type="password" matInput formControlName="matchUserPassword">
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label class="form-label">E-mail</mat-label>
+            <input type="text" matInput formControlName="userEmail">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Função</mat-label>
+            <mat-select [(value)]="role">
+              <mat-option value="ROLE_RECRUITER">Recrutador</mat-option>
+              <mat-option value="ROLE_CANDIDATE">Candidato</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Habilidades</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option *ngFor="let skill of skills" [value]="{skillId: skill.skillId, title: skill.title}">{{skill.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button type="button" (click)="addSkill()" mat-raised-button>Adicionar</button>
+        </div>
+
+        <button style="width: 212px; align-self: center;" type="submit"
+                [disabled]="isButtonDisabled">{{buttonText}}</button>
+      </form>
+      <div class='spacing'>Já tem uma conta?
+        <span class='highlight' routerLink="/auth/sign-in">ENTRAR!</span>
+      </div>
+
+      <div class="show-selected-skills">
+        <p style="text-align: center">Habilidades selecionadas: </p>
+        <div>
+          <button disabled *ngFor="let skill of selectedSkills">{{selectedSkills.length ? skill.title : "" }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="login-container">
+  <img src="../../../assets/img/logo.jpeg" alt="Logo" class="logo">
+  <form [formGroup]="loginForm" (ngSubmit)="signIn()" class="form-group">
+    <mat-form-field >
+      <mat-label>usuario.login</mat-label>
+      <input matInput formControlName="userLogin">
+    </mat-form-field>
+    <mat-form-field >
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="userPassword">
+    </mat-form-field>
+    <button type="button" (click)="signIn()">Entrar</button>
+  </form>
+</div> -->
