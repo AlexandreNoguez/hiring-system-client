@@ -29,6 +29,13 @@ O programa foi criado para atender as exigências de um teste técnico para a va
 - Candidatos podem aplicar para as vagas
 - Recrutadores são notificados por e-mail quando um candidato se aplica
 
+## Novas funcionalidades pra uma próxima versão
+- na hora de escolher habilidades, colocar um botão para excluir da lista
+- pelo front, fazer com que o ADMIN consiga editar e deletar habilidades
+- permitir que o recrutador consiga editar e deletar vagas
+- criar novos auth guards para rotas de criar habilidades e cadastrar vagas
+- criar readme em inglês
+
 ## Agradecimento
 
 Agradeço pela oportunidade de desenvolver este projeto. Estou entusiasmado para contribuir e espero avançar para as próximas etapas do processo seletivo. Obrigado por considerar minha participação.
