@@ -1,3 +1,27 @@
 <app-header></app-header>
 
-<p>home works!</p>
+<div class="home-container">
+  <div class="home-search">
+    <h2 class="title">
+      Busque por Vagas internas que você se vê no futuro!
+    </h2>
+
+    <input class="search-input" type="text" placeholder="Buscar vagas">
+  </div>
+  <div class="card-container">
+
+    <app-role-card
+      *ngFor="let job of jobs"
+      [title]="job.title"
+      [description]="job.description"
+      [jobId]="job.jobId"
+
+
+      (click)="onApplyCandidate()"
+      >
+    </app-role-card>
+  </div>
+  <!--  Futuramente vou colocar um carousel de vagas-->
+  <div class="carousel"></div>
+</div>
+
