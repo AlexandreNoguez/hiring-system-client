@@ -11,14 +11,16 @@ import {SkillService} from "../../service/skill.service";
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit{
+export class SignUpComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
     private skillService: SkillService,
     private notification: NotificationService
-  ) { }
+  ) {
+  }
+
   skills: Skill[] = [];
   isButtonDisabled = false;
   buttonText = "Enviar";
@@ -37,7 +39,10 @@ export class SignUpComponent implements OnInit{
   signUpForm: FormGroup = this.formBuilder.group({
     userLogin: ["", Validators.required],
     userName: ["", Validators.required],
-    userPassword: ["", Validators.required],
+    userPassword: ["", [
+      Validators.required,
+      Validators.pattern("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$")
+    ]],
     matchUserPassword: ["", Validators.required],
     userEmail: ["", Validators.required],
     skills: ["", Validators.required],
@@ -45,14 +50,25 @@ export class SignUpComponent implements OnInit{
   });
 
   addSkill() {
+    // let userDetails = this.signUpForm.value;
+
+    // console.log("userDetails", userDetails)
+
+    if (this.selected.title === "") {
+      return this.notification.errorMessage("Antes de adicionar, selecione uma habilidade da lista.")
+    }
+
+    if (this.selectedSkills.includes(this.selected)) {
+      return this.notification.errorMessage("Esta habilidade já está na sua lista! Escolha outras.")
+    }
+
     this.selectedSkills.push(this.selected)
     this.selected = {skillId: null, title: ''}
-    console.log("signUpForm", this.signUpForm)
-    console.log("skills", this.skills)
-    console.log("role", this.role)
+
+
   }
 
-  async onSignUp():Promise<void> {
+  onSignUp(): void {
     this.isButtonDisabled = true;
     this.buttonText = "Carregando..."
 
@@ -62,10 +78,24 @@ export class SignUpComponent implements OnInit{
 
     userDetails.skills = listOfSkills
 
-    userDetails.roles.push(this.role)
+    if (this.role) {
+      userDetails.roles.push(this.role)
+    }
 
+    if (userDetails.userPassword !== userDetails.matchUserPassword) {
+      this.isButtonDisabled = false;
+      this.buttonText = "Enviar"
 
-    await this.authService.signUp(userDetails).subscribe(
+      return this.notification.errorMessage("As senhas precisa ser idênticas.")
+    }
+    console.log("roles", userDetails.roles)
+    if (!userDetails.roles.length) {
+      this.isButtonDisabled = false;
+      this.buttonText = "Enviar"
+      return this.notification.errorMessage("Selecione um tipo de usuário para utilizar a plataforma.")
+    }
+
+    this.authService.signUp(userDetails).subscribe(
       (response: any) => {
         this.notification.errorMessage("Cadastro realizado com sucesso, você já pode logar!")
         this.isButtonDisabled = true;
@@ -75,7 +105,27 @@ export class SignUpComponent implements OnInit{
       (error) => {
         this.isButtonDisabled = false;
         this.buttonText = "Enviar"
-        this.notification.errorMessage("Verifique todos os campos e tente novamente.")
+        let parsedError = JSON.parse(error.error);
+
+        // console.log(parsedError)
+
+        if (!parsedError.errors) {
+          return this.notification.errorMessage(parsedError.message)
+        }
+
+        parsedError.errors.forEach((error: string) => {
+
+          let errorMsg = error.split(' ');
+
+          errorMsg.shift();
+
+          let newErrorMsg = errorMsg.join();
+
+          let formattedPhrase = newErrorMsg.replaceAll(",", " ")
+
+          this.notification.errorMessage(formattedPhrase)
+        })
+
       }
     );
 
@@ -87,8 +137,8 @@ export class SignUpComponent implements OnInit{
         this.skills = skills;
       },
       error => {
-        console.error("Error fetching skills:", error);
-        // Handle errors, show error message, etc.
+        console.error("Erro ao carregar habilidades:", error);
+
       }
     );
   }

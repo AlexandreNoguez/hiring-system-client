@@ -1,4 +1,3 @@
-<router-outlet></router-outlet>
 <div class='container'>
   <div class='window'>
     <div class='content'>
@@ -19,6 +18,14 @@
             <mat-label class="form-label">Senha</mat-label>
             <input type="password" matInput formControlName="userPassword">
           </mat-form-field>
+          <div class="error-container" *ngIf="signUpForm.controls['userPassword'].invalid && (signUpForm.controls['userPassword'].touched || signUpForm.controls['userPassword'].dirty)">
+            <small class="error-message" *ngIf="signUpForm.controls['userPassword'].hasError('pattern')">
+              Esse campo precisa de uma letra maiúscula, mínuscula, um caracter especial e um número.
+            </small>
+            <small class="error-message" *ngIf="signUpForm.controls['userPassword'].hasError('required')">
+              Esse campo precisa ser preenchido.
+            </small>
+          </div>
           <mat-form-field>
             <mat-label class="form-label">Repita sua senha</mat-label>
             <input type="password" matInput formControlName="matchUserPassword">
