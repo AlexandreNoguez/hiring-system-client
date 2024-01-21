@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'perfil',
-    loadChildren: () => import("./pages/create-jobs/create-jobs.module").then(m => m.CreateJobsModule),
+    loadChildren: () => import("./pages/profile/profile.module").then(m => m.ProfileModule),
   },
   {path: '404', component: PageNotFoundComponent},
   {path: '**', redirectTo: '/404'}

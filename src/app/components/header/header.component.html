@@ -9,7 +9,7 @@
             <li *ngIf="isAdmin"><a class="nav-links" routerLink="/cadastrar-habilidades">Gerenciar Habilidades</a></li>
             <li *ngIf="isCandidate"><a class="nav-links" routerLink="/cadastrar-vagas">Gerenciar Vagas</a></li>
 <!--            <li routerLink="/buscar-vagas"><a class="nav-links">Buscar Vagas</a></li>-->
-            <li routerLink="/cadastrar-vagas"><a class="nav-links">Detalhes</a></li>
+            <li routerLink="/perfil"><a class="nav-links">Perfil</a></li>
             <li><a class="nav-links" (click)="onSignOut()">Sair</a></li>
           </ul>
         </nav>
@@ -29,9 +29,9 @@
             <span>Gerenciar Vagas</span>
           </button>
 
-          <button mat-menu-item>
+          <button mat-menu-item routerLink="/perfil">
             <mat-icon>voicemail</mat-icon>
-            <span>Detalhes</span>
+            <span>Perfil</span>
           </button>
 
           <button mat-menu-item>
@@ -44,5 +44,3 @@
 
   </div>
 </header>
-
-
