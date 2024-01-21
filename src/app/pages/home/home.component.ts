@@ -1,7 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {JobModel} from "../../types/JobTypes";
 import {JobService} from "../../service/job.service";
-import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -16,23 +15,31 @@ export class HomeComponent implements OnInit {
 
   }
   jobs: JobModel[] = []
-  userSearch: string = ""
+  searchTerm: string = ""
 
   ngOnInit() {
     this.onGetAllJobs();
-    console.log("jobs",this.jobs)
+    // console.log("jobs", this.jobs)
 
   }
   onGetAllJobs(): void {
     this.jobService.getAllJobs("").subscribe(
       (response: any) => {
-        console.log("response", response)
+        // console.log("response", response)
         this.jobs = response?.elements || [];
       },
       (error) => {
         console.error('Error fetching jobs:', error);
       }
     );
+  }
+
+  filteredJob(searchTerm: string) {
+    // console.log("teste", searchTerm);
+
+    this.jobs.filter(job => {
+      return job.title === searchTerm
+    })
   }
 
   onApplyCandidate(): void {
