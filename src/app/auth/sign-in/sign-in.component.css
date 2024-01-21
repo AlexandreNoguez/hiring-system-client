@@ -7,8 +7,8 @@
   -ms-flex-pack: center;
   height: 100vh;
   width: 100%;
-  background: -webkit-linear-gradient(#00092a, #0f44c6);
-  background: linear-gradient(#00092a, #0f44c6);
+  /*background: -webkit-linear-gradient(#00092a, #0f44c6);*/
+  /*background: linear-gradient(#00092a, #0f44c6);*/
 }
 
 .window {
@@ -27,16 +27,13 @@
   box-sizing: border-box;
   /* height: 100vh; */
   width: 100%;
-  background: #fff;
-  background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823') top left no-repeat;
+  /*background: #fff;*/
+  /*background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823') top left no-repeat;*/
 }
 
 
 
 .content {
-  padding-left: 25px;
-  padding-right: 25px;
-  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -45,7 +42,7 @@
   -webkit-flex-flow: column;
   -ms-flex-flow: column;
   flex-flow: column;
-  /* height: 100vh; */
+   height: 100vh;
   z-index: 5;
 }
 
@@ -267,4 +264,3 @@ button {
 button:hover {
   background-color: #45a049;
 }
-

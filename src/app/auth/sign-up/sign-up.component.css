@@ -5,10 +5,10 @@
 .container {
   display: flex;
   -ms-flex-pack: center;
-  height: 100vh;
-  width: 100%;
-  background: -webkit-linear-gradient(#00092a, #0f44c6);
-  background: linear-gradient(#00092a, #0f44c6);
+  /*height: 100vh;*/
+  /*width: 100%;*/
+  /*background: -webkit-linear-gradient(#00092a, #0f44c6);*/
+  /*background: linear-gradient(#00092a, #0f44c6);*/
 }
 
 .window {
@@ -26,15 +26,11 @@
   box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   width: 100%;
-  background: #fff;
-  background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823') top left no-repeat;
 }
 
 
 
 .content {
-  padding-left: 25px;
-  padding-right: 25px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -44,6 +40,7 @@
   -webkit-flex-flow: column;
   -ms-flex-flow: column;
   flex-flow: column;
+  height: 100vh;
   z-index: 5;
 }
 
@@ -79,10 +76,34 @@
   gap: 1rem;
 }
 
+.error-container {
+  position: absolute;
+  max-width: 200px;
+  height: auto;
+  background-color: #FFF;
+  z-index: 100;
+  padding: 1rem;
+  border-radius: 1rem;
+  top: 1rem;
+  right: 1rem;
+}
+
+.error-message {
+  position: relative;
+  left: 0;
+  top: 0;
+  color: red;
+  font-size: 12px;
+}
+
 .show-selected-skills{
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
+  /*position: absolute;*/
+  /*right: 0;*/
+  /*left: 0;*/
+  bottom: 1rem;
   gap: 1rem;
   font-size: 1rem;
   font-weight: lighter;
@@ -125,11 +146,7 @@
 
 
 .spacing {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
-  flex-grow: 1;
-  height: 120px;
   font-weight: 300;
   text-align: center;
   margin-top: 10px;
@@ -280,4 +297,3 @@ button {
 button:hover {
   background-color: #45a049;
 }
-
