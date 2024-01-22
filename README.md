@@ -14,8 +14,8 @@ O programa foi criado para atender as exigências de um teste técnico para a va
 
 ## Como Executar o Programa
 
-1. Clone o repositório [hiring-system-client](link-para-o-repositorio-cliente).
-2. Clone o repositório [hiring-system-server](link-para-o-repositorio-servidor).
+1. Clone o repositório [hiring-system-client](https://github.com/AlexandreNoguez/hiring-system-client).
+2. Clone o repositório [hiring-system-server](https://github.com/AlexandreNoguez/hiring-system-server).
 3. No terminal, navegue até a pasta do projeto.
 4. Certifique-se de ter o Node.js instalado.
 5. Execute o comando `npm install` para instalar as dependências.
