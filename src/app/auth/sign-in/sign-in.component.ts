@@ -28,7 +28,6 @@ export class SignInComponent implements OnInit {
 
   async ngOnInit() {
     let token = await this.authService.decodePayloadJWT()
-    console.log("token", token);
     if (token) {
       this.router.navigate(['/']);
     } else {
@@ -47,8 +46,7 @@ export class SignInComponent implements OnInit {
     const credentials = this.loginForm.value;
 
     this.authService.signIn(credentials).subscribe(
-      (response) => {
-        console.log('API Response:', response);
+      () => {
 
         this.router.navigate(['/']);
       },

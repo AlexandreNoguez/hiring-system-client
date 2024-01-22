@@ -42,7 +42,6 @@ export class CreateJobsComponent implements OnInit{
   addSkill() {
     this.selectedSkills.push(this.selected)
     this.selected = ''
-    console.log("selectedSkills", this.jobForm)
   }
 
   onCreateView() {
@@ -73,7 +72,6 @@ export class CreateJobsComponent implements OnInit{
 
     this.jobService.createNewJob(job).subscribe(
       (response) => {
-        console.log('API Response:', response);
         this.notification.okMessage("Vaga cadastrada com sucesso.")
         this.isButtonDisabled = false
         this.buttonText = "Enviar"
@@ -116,7 +114,6 @@ export class CreateJobsComponent implements OnInit{
       },
       error => {
         console.error("Error fetching skills:", error);
-        // Handle errors, show error message, etc.
       }
     );
   }

@@ -37,8 +37,6 @@ export class HeaderComponent implements OnInit {
   innerWidth = window.innerWidth;
   onWindowScroll() {
 
-    console.log("innerWidth", innerWidth);
-
     if (innerWidth < 480) {
       this.isFixedNavbar = false;
     } else {
@@ -51,20 +49,13 @@ export class HeaderComponent implements OnInit {
     const hasRoleCandidate = readToken.ROLES.includes('ROLE_CANDIDATE');
     const hasRoleAdmin = readToken.ROLES.includes('ROLE_ADMIN');
 
-    console.log(readToken.ROLES);
-
     if (hasRoleCandidate) {
-      console.log('Usuário tem a ROLE_CANDIDATE');
       return this.isCandidate = false;
     } else if (hasRoleAdmin) {
-      console.log('Usuário TEM ADMIN');
       this.isCandidate = false;
       this.isAdmin = true;
     }
-    console.log('Usuário NÃO tem a ROLE_CANDIDATE');
     return this.isCandidate = true;
-
-
 
   }
 
@@ -72,8 +63,4 @@ export class HeaderComponent implements OnInit {
     return this.authService.signOut();
   }
 
-  // toggleNavbar() {
-  //   this.navbarOpened = !this.navbarOpened;
-  //   console.log("innerWidth", this.innerWidth);
-  // }
 }

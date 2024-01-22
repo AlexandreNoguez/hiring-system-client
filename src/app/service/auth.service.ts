@@ -26,7 +26,6 @@ export class AuthService {
 
 
   signIn(credentials: AuthModel): Observable<any> {
-    console.log(`${this.apiUrl}`, credentials);
 
     return this.http.post(`${this.apiUrl}/auth/signIn`, credentials, { responseType: 'text' }).pipe(
       tap((response: string) => {
@@ -39,7 +38,6 @@ export class AuthService {
   }
 
   signUp(userDetails: SignUpModel){
-    console.log("URL", `${this.apiUrl}/user/register`)
     return this.http.post(`${this.apiUrl}/user/register`, userDetails, { responseType: 'text' }).pipe(
       tap((response: string) => {
         if (response) {}
@@ -48,7 +46,6 @@ export class AuthService {
   }
 
   signOut() {
-    console.log("signout");
 
     localStorage.removeItem("authToken");
     this.router.navigate(["auth/sign-in"])
@@ -82,9 +79,7 @@ export class AuthService {
         return null
       }
     } catch (err) {
-      console.log("aqui");
       return console.error(err);
-      ;
     }
   }
 
@@ -93,5 +88,3 @@ export class AuthService {
 
 
 }
-
-
