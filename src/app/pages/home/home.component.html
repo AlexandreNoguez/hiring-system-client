@@ -6,12 +6,12 @@
       Busque por Vagas internas que você se vê no futuro!
     </h2>
 
-    <input class="search-input" type="text" placeholder="Buscar vagas">
+    <input class="search-input" type="text" placeholder="Buscar vagas" [(ngModel)]="searchTerm">
   </div>
   <div class="card-container">
 
     <app-role-card
-      *ngFor="let job of jobs"
+      *ngFor="let job of jobs | searchFilter: searchTerm"
       [title]="job.title"
       [description]="job.description"
       [jobId]="job.jobId"
